@@ -1,10 +1,16 @@
 def ru_encoder(text, key):
     res = ""
     for i in range(len(text)):
-        if text[i].isalpha():
-            res += chr(ord(text[i]) + key)
+        if text[i] in ru_up_al:
+            print(ru_up_al[(ru_up_al.index(text[i]) + key) % len(ru_up_al)], end="")
+        if text[i] in ru_lo_al:
+            print(ru_lo_al[(ru_lo_al.index(text[i]) + key) % len(ru_lo_al)], end="")
+        if text[i] in en_up_al:
+            print(en_up_al[(en_up_al.index(text[i]) + key) % len(en_up_al)], end="")
+        if text[i] in en_lo_al:
+            print(en_lo_al[(en_lo_al.index(text[i]) + key) % len(en_lo_al)], end="")
         else:
-            res += text[i]
+            print(text[i], end="")
     print(res)
 
 def en_encoder(text, key):
@@ -17,7 +23,10 @@ def en_decoder(text):
     pass
 
 
-
+en_lo_al = 'abcdefghijklmnopqrstuvwxyz'
+en_up_al = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+ru_lo_al = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+ru_up_al = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
 
 print("Добро пожаловать в Шифратор/Дешифратор Цезаря!")
 
